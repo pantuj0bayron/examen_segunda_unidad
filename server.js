@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const app = express();
 var corsOptions = {
-    origin: "http://localhost:8081"
+    origin: "http://localhost:10000"
 };
 
 app.use(cors(corsOptions));
@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 require("./app/routes/alumno.routes")(app);
 
-const PORT = process.env.PORT || 1000;
+const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
     console.log(`el servidor esta corriendo en el puerto ${PORT}.`);
 });

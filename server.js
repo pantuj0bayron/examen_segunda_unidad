@@ -20,7 +20,7 @@ app.get("/", (req, res) => {
 });
 require("./app/routes/alumno.routes")(app);
 
-const PORT = process.env.PORT || 8081;
+const PORT = process.env.PORT || 1000;
 app.listen(PORT, () => {
-    console.log(`el setvidor esta corriendo en el puerto${PORT}.`);
+    console.log(`el servidor esta corriendo en el puerto ${PORT}.`);
 });

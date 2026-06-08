@@ -12,9 +12,13 @@ module.exports = (sequelize, Sequelize) => {
     Promedio_del_estudiante: {
       type: Sequelize.INTEGER
     },
+
+
+
     ingreso: {
       type: Sequelize.DATE
     }
   });
   return alumnos;
+  
 };

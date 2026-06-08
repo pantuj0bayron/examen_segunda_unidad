@@ -1,5 +1,5 @@
 const db = require('../models');
-const alumno = db.alumno;
+const alumno = db.alumnos;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
@@ -9,14 +9,14 @@ exports.create = (req, res) => {
         });
         return;
     }
-    const alumnonuevo = {
-        nombre_del_estudiante: req.body.nombre_del_estudiante,
-        apellido_del_estudiante: req.body.apellido_del_estudiante,
-        edad_del_estudiante: req.body.edad_del_estudiante,
-        Promedio_del_estudiante: req.body.Promedio_del_estudiante,
-        ingreso: req.body.ingreso
+    const nuevoalumno = {
+    nombre_del_estudiante: req.body.nombre_del_estudiante,
+    apellido_del_estudiante: req.body.apellido_del_estudiante,
+    edad_del_estudiante: req.body.edad_del_estudiante,
+    Promedio_del_estudiante: req.body.Promedio_del_estudiante,
+    ingreso: req.body.ingreso
 };
-alumno .create(alumnonuevo)
+alumno .create(nuevoalumno)
 .then(data => {
     res.send(data);
 })

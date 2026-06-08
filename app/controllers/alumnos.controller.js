@@ -1,5 +1,5 @@
 const db = require('../models');
-const alumno = db.alumnos;
+const alumno = db.alumno;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {

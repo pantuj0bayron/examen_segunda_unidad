@@ -15,6 +15,9 @@ module.exports = (sequelize, Sequelize) => {
     ingreso: {
       type: Sequelize.DATE
     }
+  }, {
+    tableName: 'alumnos_2', // <--- Ahora sí está dentro de la configuración
+    timestamps: false     // Recomendado para evitar que busque campos createdAt/updatedAt
   });
   return alumno;
 };

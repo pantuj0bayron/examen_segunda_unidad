@@ -11,6 +11,11 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./app/models");
+b.sequelize.sync().then(() => {
+  console.log("¡Conexión exitosa!");
+}).catch(err => {
+  console.error("Error de conexión:", err);
+});
 db.Sequelize.sync();
 app.get("/", (req, res) => {
     res.json({ message: "mi primera base de datos en la nube" });

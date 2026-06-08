@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 const db = require("./app/models");
-db.Sequelize.sync();
+db.sequelize.sync();
 app.get("/", (req, res) => {
     res.json({ message: "mi primera base de datos en la nube" });
 });

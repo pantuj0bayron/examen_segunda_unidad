@@ -24,5 +24,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 db.alumnos = require('./alumnos.models.js')(sequelize, Sequelize);
 console.log("¿El modelo alumnos tiene la función create?:", typeof db.alumnos.create === 'function')
+const AlumnoModel = require('./alumnos.models.js');
+db.alumnos = AlumnoModel(sequelize, Sequelize);
 module.exports = db;
 

@@ -1,4 +1,5 @@
 const db = require('../models');
+console.log("CONTENIDO DE DB:", db)
 console.log("Contenido de db:", Object.keys(db)); // Esto nos dirá qué modelos ve el controlador
 const alumno = db.alumnos;
 console.log("¿Es alumno un objeto válido?:", alumno !== undefined);

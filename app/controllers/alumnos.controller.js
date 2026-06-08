@@ -3,7 +3,7 @@ const alumno = db.alumnos_2;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-    if(!req.body.nombre){
+    if(!req.body.nombre_del_estudiante) {
         res.status(400).send({
             message: "El contenido no puede estar vacio"
         });

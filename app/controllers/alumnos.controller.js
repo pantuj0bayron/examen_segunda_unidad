@@ -1,12 +1,9 @@
 const db = require('../models');
-console.log("CONTENIDO DE DB:", db)
-console.log("Contenido de db:", Object.keys(db)); // Esto nos dirá qué modelos ve el controlador
 const alumno = db.alumnos;
-console.log("¿Es alumno un objeto válido?:", alumno !== undefined);
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-    if(!req.body.nombre_del_estudiante) {
+    if(!req.body.nombre_del_estudiante){
         res.status(400).send({
             message: "El contenido no puede estar vacio"
         });

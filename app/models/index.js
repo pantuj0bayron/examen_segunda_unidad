@@ -1,21 +1,26 @@
-const Sequelize = require("sequelize");
-
-// Sequelize puede recibir la URL directamente
-const sequelize = new Sequelize(process.env.DATABASE_URL, {
-  dialect: 'postgres',
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false // Necesario para la mayoría de servicios en la nube
+const { dialect } = require('../config/db.config');
+const { Pool } = require('../config/db.config');
+const dbConfig = require('../config/db.config');
+const Sequelize = require('sequelize');
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+    host: dbConfig.HOST,
+    dialect: dbConfig.dialect,
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    },
+    Pool: { 
+        max: dbConfig.Pool.max,
+        min: dbConfig.Pool.min,
+        acquire: dbConfig.Pool.acquire,
+        idle: dbConfig.Pool.idle
+        
     }
-  }
 });
-
 const db = {};
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
-
-// Inicializa el modelo
-db.alumnos = require('./alumnos.models.js')(sequelize, Sequelize);
-
+db.Sequelize = sequelize;
+db.alumnos = require('./alumnos.model.js')(sequelize, Sequelize);
 module.exports = db;
+

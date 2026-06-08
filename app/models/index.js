@@ -20,8 +20,7 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
     }
 });
 const db = {};
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
-db.alumnos = require('./alumnos.model.js')(sequelize, Sequelize);
+db.Sequelize = sequelize;
+db.alumnos = require('./alumnos.model.js')(Sequelize, sequelize);
 module.exports = db;
 

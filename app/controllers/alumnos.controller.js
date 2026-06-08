@@ -38,7 +38,7 @@ exports.findAll = (req, res) => {
     })
     .catch(err => {
         res.status(500).send({
-            message: err.message || "Ocurrio algun  al buscar  alumnos con ese ID"
+            message: err.message || "Ocurrio algun  al buscar  alumno con ese ID"
         });
     });
     
@@ -114,13 +114,13 @@ exports.deleteAll = (req, res)=> {
         truncate: false 
     })
     .then(nums => {
-        res.send({ message: `${nums} alumnos eliminados!`
+        res.send({ message: `${nums} alumno eliminados!`
          });
     })
 
     .catch(err => {
         res.status(500).send({
-            message: err.message || "Ocurrio algun  al eliminar todos los alumnos."
+            message: err.message || "Ocurrio algun  al eliminar todos los alumno."
         });
         });
 

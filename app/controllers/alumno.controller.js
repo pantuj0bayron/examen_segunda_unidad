@@ -16,7 +16,7 @@ exports.create = (req, res) => {
         Promedio_del_estudiante: req.body.Promedio_del_estudiante,
         ingreso: req.body.ingreso
 };
-alumno .create(alumnonuevo)
+alumno.create(alumnonuevo)
 .then(data => {
     res.send(data);
 })

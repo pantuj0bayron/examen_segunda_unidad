@@ -9,14 +9,14 @@ exports.create = (req, res) => {
         });
         return;
     }
-    const alumno = {
+    const alumnonuevo = {
         nombre_del_estudiante: req.body.nombre_del_estudiante,
         apellido_del_estudiante: req.body.apellido_del_estudiante,
         edad_del_estudiante: req.body.edad_del_estudiante,
         Promedio_del_estudiante: req.body.Promedio_del_estudiante,
         ingreso: req.body.ingreso
 };
-alumno .create(alumno)
+alumno .create(alumnonuevo)
 .then(data => {
     res.send(data);
 })

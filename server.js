@@ -18,8 +18,7 @@ db.Sequelize.sync();
 app.get("/", (req, res) => {
     res.json({ message: "mi primera base de datos en la nube" });
 });
-require("./app/routes/maestros.routes")(app);
-require("./app/routes/encargados.routes")(app);
+
 require("./app/routes/alumnos.routes")(app);
 const PORT = process.env.PORT || 8081;
 app.listen(PORT, () => {

@@ -11,11 +11,11 @@ const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
             rejectUnauthorized: false
         }
     },
-    Pool: { 
-        max: dbConfig.Pool.max,
-        min: dbConfig.Pool.min,
-        acquire: dbConfig.Pool.acquire,
-        idle: dbConfig.Pool.idle
+    pool: { 
+        max: dbConfig.pool.max,
+        min: dbConfig.pool.min,
+        acquire: dbConfig.pool.acquire,
+        idle: dbConfig.pool.idle
         
     }
 });

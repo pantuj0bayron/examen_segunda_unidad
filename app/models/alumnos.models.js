@@ -1,5 +1,5 @@
 module.exports = (sequelize, Sequelize) => {
-  const alumno_2 = sequelize.define("alumno_2", {
+  const alumnos_2 = sequelize.define("alumnos_2", {
     nombre_del_estudiante: {
       type: Sequelize.STRING
     },
@@ -16,5 +16,5 @@ module.exports = (sequelize, Sequelize) => {
       type: Sequelize.DATE
     }
   });
-  return alumno_2;
+  return alumnos_2;
 };

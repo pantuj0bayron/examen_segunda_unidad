@@ -1,23 +1,23 @@
-module.exports = (sequelize, Sequelize)=>
-{
-
-const alumno = sequelize.define("alumnos_estudiantes", {
+module.exports = (sequelize, Sequelize) => {
+  const alumno = sequelize.define("alumno", {
     nombre_del_estudiante: {
-        type: Sequelize.STRING
+      type: Sequelize.STRING
     },
     apellido_del_estudiante: {
-        type: Sequelize.STRING
-    }, 
+      type: Sequelize.STRING
+    },
     edad_del_estudiante: {
-        type: Sequelize.INTEGER
+      type: Sequelize.INTEGER
     },
     Promedio_del_estudiante: {
-        type: Sequelize.INTEGER
+      type: Sequelize.INTEGER
     },
     ingreso: {
-        type: Sequelize.DATE
+      type: Sequelize.DATE
     }
-});
-return alumnos_estudiantes;
-
-}
+  }, {
+    tableName: 'alumnos', // <--- Ahora sí está dentro de la configuración
+    timestamps: false     // Recomendado para evitar que busque campos createdAt/updatedAt
+  });
+  return alumno;
+};

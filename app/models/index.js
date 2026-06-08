@@ -1,29 +1,26 @@
-const dbConfig = require("../config/db.config.js");
-const Sequelize = require("sequelize");
-
+const { dialect } = require('../config/db.config');
+const { Pool } = require('../config/db.config');
+const dbConfig = require('../config/db.config');
+const Sequelize = require('sequelize');
 const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
-  host: dbConfig.HOST,
-  dialect: dbConfig.dialect,
-  dialectOptions: {
-    ssl: {
-      require: true, // Esto es lo que Neon está pidiendo
-      rejectUnauthorized: false // Necesario para evitar errores de certificados en Render
+    host: dbConfig.HOST,
+    dialect: dbConfig.dialect,
+    dialectOptions: {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false
+        }
+    },
+    Pool: { 
+        max: dbConfig.Pool.max,
+        min: dbConfig.Pool.min,
+        acquire: dbConfig.Pool.acquire,
+        idle: dbConfig.Pool.idle
+        
     }
-  },
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  }
 });
-
 const db = {};
-
-db.Sequelize = Sequelize;
-db.sequelize = sequelize; // ESTA ES LA LÍNEA CRÍTICA
-
-// Importa tus modelos
-db.alumnos = require("./alumno.models.js")(sequelize, Sequelize);
-
+db.Sequelize = sequelize;
+db.alumnos = require('./alumnos.model.js')(sequelize, Sequelize);
 module.exports = db;
+

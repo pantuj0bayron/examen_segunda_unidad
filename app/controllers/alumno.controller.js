@@ -3,7 +3,7 @@ const alumno = db.alumnos;
 const Op = db.Sequelize.Op;
 
 exports.create = (req, res) => {
-    if(!req.body.nombre_del_estudiante){
+    if(!req.body.nombre){
         res.status(400).send({
             message: "El contenido no puede estar vacio"
         });
@@ -16,7 +16,7 @@ exports.create = (req, res) => {
         Promedio_del_estudiante: req.body.Promedio_del_estudiante,
         ingreso: req.body.ingreso
 };
-alumno.create(alumnonuevo)
+alumno .create(alumnonuevo)
 .then(data => {
     res.send(data);
 })

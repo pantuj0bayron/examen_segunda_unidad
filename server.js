@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 console.log("--- EL SERVIDOR HA INICIADO ---");
 const db = require("./app/models");
-b.sequelize.sync().then(() => {
+db.sequelize.sync().then(() => {
   console.log("¡Conexión exitosa!");
 }).catch(err => {
   console.error("Error de conexión:", err);

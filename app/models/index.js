@@ -1,13 +1,12 @@
-const dbConfig = require("../config/db.config.js");
 const Sequelize = require("sequelize");
 
-// Sequelize puede usar la URL directamente
-const sequelize = new Sequelize(dbConfig.url, {
-  dialect: dbConfig.dialect,
+// Sequelize puede recibir la URL directamente
+const sequelize = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
   dialectOptions: {
     ssl: {
       require: true,
-      rejectUnauthorized: false
+      rejectUnauthorized: false // Necesario para la mayoría de servicios en la nube
     }
   }
 });
@@ -15,6 +14,8 @@ const sequelize = new Sequelize(dbConfig.url, {
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-db.alumnos = require("./alumnos.models.js")(sequelize, Sequelize);
+
+// Inicializa el modelo
+db.alumnos = require('./alumnos.models.js')(sequelize, Sequelize);
 
 module.exports = db;

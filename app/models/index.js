@@ -1,28 +1,26 @@
 const dbConfig = require("../config/db.config.js");
 const Sequelize = require("sequelize");
 
-// Sequelize recibe la URL directamente como primer argumento
-const sequelize = new Sequelize(dbConfig.url, {
-    dialect: dbConfig.dialect,
-    dialectOptions: {
-        ssl: {
-            require: true,
-            rejectUnauthorized: false
-        }
-    },
-    pool: {
-        max: dbConfig.pool.max,
-        min: dbConfig.pool.min,
-        acquire: dbConfig.pool.acquire,
-        idle: dbConfig.pool.idle
+const sequelize = new Sequelize(dbConfig.DB, dbConfig.USER, dbConfig.PASSWORD, {
+  host: dbConfig.HOST,
+  dialect: dbConfig.dialect,
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
     }
+  },
+  pool: {
+    max: dbConfig.pool ? dbConfig.pool.max : 5, // Seguridad extra: si falla, usa 5
+    min: dbConfig.pool ? dbConfig.pool.min : 0,
+    acquire: dbConfig.pool ? dbConfig.pool.acquire : 30000,
+    idle: dbConfig.pool ? dbConfig.pool.idle : 10000
+  }
 });
 
 const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
-
-// Inicializa el modelo una sola vez
 db.alumnos = require("./alumnos.models.js")(sequelize, Sequelize);
 
 module.exports = db;
